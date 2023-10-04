@@ -48,7 +48,7 @@ queueConfigs:
 
 ## Getting queue information with the Advanced Redrive tool
 
-The advanced redrive tool uses a directory structure to store messages are they are received, processed, updated, and deleted. The first thing we should do is retrieve queue information from the demo config, `./config/demo.yaml`. This will also build out our directory structure.
+The advanced redrive tool uses a directory structure to store messages as they are received, processed, updated, and deleted. The first thing we should do is retrieve queue information from the demo config, `./config/demo.yaml`. When we run the following command, the tool builds out the directory structure automatically:
 
 ```
 ➜  npm run redrive -- -c config/demo.yaml -l
@@ -133,7 +133,24 @@ After we have received messages, we can view them in the DLQ directories:
 ./messages/advanced-redrive-demo-1-dlq/received
 ./messages/advanced-redrive-demo-2-dlq/received
 ./messages/advanced-redrive-demo-3-dlq/received
+```
 
+Here is one example message. Notice `Body` has been parsed:
+
+```
+{
+  "MessageId": "0acc2f20-1b9f-4777-a4cd-31391a5072ce",
+  "ReceiptHandle": "AQEBM9Vv7YD6+Jgz+SYEsqp+y2aq3pSiV/Ul3QnGjHmc1U2IAxdwrZ8aAZVS0JEYOzUugIPI6MZC95RsUproDyWsRg4q1lbbzMOnrMdwm+YVet8Sl2aCF9k2MpmLC2LvoDieMvmeqbEN/kJxxRhlh44ur4+W/KgsLRcE6a5oMbONjsuq6X0q39v0+Z4neL6YFDd14hJMcuf1Q+qSFjRrp0elja2SDX0dGXMCouU4Sc2Nlo7gQwVH+8K3MaDReQl3KQusYBroG+JOzbiKv70NDpKlUyEXWDN/YC+PV1IUFwJnqHXXfoPz5MzJRbsRs23SxAavamHSGWqx1S51LjYAGFb/7S/FhWKHy207YVs1jW8kCE86NR3QPcAhfDheQrpGuZjLvu89lstwtZtRVKsWUvvKJ3eD8kuIGsToCJ2fhoyLZpM=",
+  "MD5OfBody": "94e2ca987533a90d19b04b2878ca054b",
+  "Body": {
+    "messageType": "SHOULD_DELETE",
+    "email": "Brianne.Prohaska71@hotmail.com",
+    "description": "Vivo utor adversus aperte cornu conor cito decumbo."
+  },
+  "Attributes": {
+    "SentTimestamp": "1696447591720"
+  }
+}
 ```
 
 ## Processing messages from our dead-letter queues
@@ -185,7 +202,24 @@ Processed batch. 31 deletes, 0 errors, 37 skips, 32 updates for advanced-redrive
 Processed all messages. 31 deletes, 0 errors, 37 skip, 32 updates for advanced-redrive-demo-3-dlq.
 ```
 
-If we inspect our file system, we should see our messages triaged into their appropriate directories. Updates also have their messages modified, with the new attribute `modified: true`.
+If we inspect our file system, we should see our messages triaged into their appropriate directories. Updates also have their messages modified, with the new attribute `modified: true`:
+
+```
+{
+  "MessageId": "1ab7f3b5-6903-4335-9bf4-71b00e5774bd",
+  "ReceiptHandle": "AQEBoXWw8SkzY9TkVwHmXbmUQwdnc9+32pE2U0ZfgWFBRodLhBQgUabo69wPfS8+fU/+Z+w0vzZxGONs0gYXaUKXc6mEt7AAKu/MmvjeoG7+24Eq3qojA2aJWRI2B1ds1GTXZwrO6C7H++O0j2/VH2e7XmtXwDDejyZCYotBRtFzPiJd9Nuzs2QCpoN3TKCyVYzUZdcJ1giTibmAGw2rowJgzCjQPFTWrmF6m0Wc0FixTx01lS3igJvE1f7eOSCqcNQEOODSm3CX2sv+mtHzoLUe26bK0WH0rGaTxEEhRTbG5PXcHsrOuF0uWFgVYvbXHiupMM3y99An+7sb92Sd9UM2/E3G1JXdWcN/lVP+CHp3Npt7AQxiFe0K6UQn0XNxg7mgMz884x2iKtZv0sOUg+Ef0ILJ+6LNHlsAkQYkFf4+fMQ=",
+  "MD5OfBody": "46a3535fd89bc580ee61cd12ec1b79e6",
+  "Body": {
+    "messageType": "SHOULD_MODIFY",
+    "email": "Darian_Lesch18@hotmail.com",
+    "description": "Eos id verbum vulgivagus sursum.",
+    "modified": true
+  },
+  "Attributes": {
+    "SentTimestamp": "1696447592461"
+  }
+}
+```
 
 ## Sending our updates and deletes
 
