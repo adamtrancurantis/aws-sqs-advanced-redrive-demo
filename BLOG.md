@@ -169,7 +169,7 @@ You can also use our TypeScript-based processor tooling if you wish:
 
 `shouldSkip` and `shouldDelete` take the message as their only argument and move the file into their appropriate directory if their function returns `true`. The `updateMapper` allows you to make in-place modifications to the message before moving it into the `updates/pending` directory.
 
-## Separating our messages based on its issue
+## Separating each message based on its issue
 
 Our test errors come in three flavors. `messageType` can be `SHOULD_SKIP`, `SHOULD_DELETE`, or `SHOULD_MODIFY`. Here is a custom processor to separate our messages based on concern:
 
