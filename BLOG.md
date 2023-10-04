@@ -8,7 +8,7 @@ There are many potential solutions to this problem, but a simple solution that I
 
 Let's demo what it would look like to use the Advanced Redrive tool by setting up some queues and inserting messages into dead-letter queues, simulating failures.
 
-If you would like to follow along, see our [demo repo](https://github.com/curantis-solutions/aws-sqs-advanced-redrive-demo).
+If you would like to follow along, see our [demo repo](https://github.com/adamtrancurantis/aws-sqs-advanced-redrive-demo).
 
 First, we will use `cdk deploy` to deploy some test queues (tip: use `export AWS_PROFILE=<my profile>` ):
 
