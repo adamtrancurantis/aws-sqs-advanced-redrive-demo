@@ -1,0 +1,10 @@
+receiveCount: 100
+dataDirectory: messages
+messageProcessors: message-processors
+queueConfigs:
+  - source: advanced-redrive-demo-1-dlq
+    destination: advanced-redrive-demo-1-queue
+  - source: advanced-redrive-demo-2-dlq
+    destination: advanced-redrive-demo-2-queue
+  - source: advanced-redrive-demo-3-dlq
+    destination: advanced-redrive-demo-3-queue
