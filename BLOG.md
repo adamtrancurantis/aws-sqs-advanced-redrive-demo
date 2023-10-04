@@ -236,7 +236,7 @@ Sent batch of 10 messages to advanced-redrive-demo-2-queue for advanced-redrive-
 ...
 ```
 
-Note that updates also delete their corresponding message from their source queue.
+Note that our processor places copies of updates into the `./deletes/pending` folder, which deletes them from their source queue after they are sent to their destination queue.
 
 Any messages updated or deleted successfully will go to their corresponding `./archived` directory. On error, a message will be routed to `./errors`.
 
@@ -248,7 +248,7 @@ We see that about a third were just deleted from the source queue, a third were 
 
 ## Conclusion
 
-The Advanced Redrive tool allows us to leverage our file system and existing tooling to view, update, and delete SQS messages. We can also use TypeScript to perform advanced operations on our queues, solving our DLQ woes with ease!
+The Advanced Redrive tool allows us to leverage our file system and existing tooling to view, update, and delete SQS messages. We can also use TypeScript to perform advanced operations on our queues' messages, solving our DLQ woes with ease!
 
 ## Cleanup
 
